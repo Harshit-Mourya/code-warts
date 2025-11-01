@@ -87,10 +87,9 @@ ArogyaMitti bridges AI with simplicity — it **translates data science into eve
 - **Backend:** **Python (FastAPI)** (Chosen for its high-speed async performance, perfect for handling multiple API calls and running our rules engine)
 - **Database:** **MongoDB** (A flexible NoSQL database chosen for its scalability and native support for geospatial data. We use **`2dsphere` indexes** for all high-speed, location-based queries.)
 - **Key APIs:**
-  - **Twilio API:** For the WhatsApp bot.
-  - **Google Cloud APIs:** Speech-to-Text & Text-to-Speech.
   - **OpenWeatherMap API:** For 7-day weather forecasts.
-
+  - **Google Cloud APIs:** Speech-to-Text & Text-to-Speech.
+  - **Data.Gov.in:** Fetching market price.
 ## 📊 Data Sources
 
 Our "3-Data-Point" engine is powered by a synthesis of:
