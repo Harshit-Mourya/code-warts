@@ -11,6 +11,9 @@ import logging
 import uuid
 import httpx
 import base64
+import google.generativeai as genai
+import os
+from typing import Dict, Optional
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -130,25 +133,56 @@ class SoilService:
 
 
 class GeminiService:
-    async def get_crop_recommendation(self, weather, soil, location):
-        return {
-            "raw_response": (
-                "1. Soybean – good match for moderate temperature.\n"
-                "2. Cotton – suitable for warm dry weather.\n"
-                "3. Pigeon Pea – tolerates medium rainfall well."
-            )
-        }
+    def __init__(self):
+        # ⚠️ SECURITY WARNING: Don't hardcode API keys! Use environment variables
+        self.api_key = "AIzaSyC3ZOdUBKW38J_Oz5d8l9t07CNz9Ce08wo"
+        genai.configure(api_key=self.api_key)
+        self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+    
+    async def get_crop_recommendation(self, weather: Dict, soil: Dict, location: Dict) -> Dict:
+        prompt = f"""You are an agricultural expert. Based on the following data, recommend top 3 crops:
+        
+Weather: Temperature {weather['temperature_avg']:.1f}°C, Humidity {weather['humidity_avg']:.1f}%, Rain probability {weather['precipitation_probability']:.1f}%
+Soil: N={soil['nitrogen']}, P={soil['phosphorus']}, K={soil['potassium']}, pH={soil['ph']}
+Location: {location}
+        
+Provide: 
+1) Top 3 crop names
+2) Brief reasoning for each (2-3 sentences)"""
+        
+        response = await self.model.generate_content_async(prompt)
+        return {"raw_response": response.text}
+    
+    async def get_fertilizer_advice(self, crop: str, farm_size: float, soil: Dict) -> Dict:
+        prompt = f"""You are an agricultural advisor. For a {farm_size} acre {crop} farm with soil N={soil['nitrogen']}, P={soil['phosphorus']}, K={soil['potassium']}, pH={soil['ph']}:
+        
+Provide simple fertilizer advice in this format:
+- Urea: X bags (reason)
+- DAP: X bags (reason)
+- Potash: X bags (reason)
+- Watering: advice based on conditions
 
-    async def get_fertilizer_advice(self, crop, farm_size, soil):
-        return {
-            "advice_text": f"Use balanced NPK fertilizer for {crop}. Apply 2 bags urea, 1 bag DAP per acre."
-        }
+Be practical and non-technical."""
+        
+        response = await self.model.generate_content_async(prompt)
+        return {"advice_text": response.text}
+    
+    async def analyze_pest_risk(self, crop: str, weather: Dict) -> Optional[Dict]:
+        prompt = f"""You are a pest management expert. For {crop} crop with weather: temp {weather['temperature_avg']:.1f}°C, humidity {weather['humidity_avg']:.1f}%:
+        
+Is there high pest risk? If yes, provide:
+1) Pest name
+2) Risk level (High/Medium/Low)
+3) 3 preventive measures
 
-    async def analyze_pest_risk(self, crop, weather):
-        if weather["humidity_avg"] > 70:
-            return {"alert_text": f"High pest risk for {crop}. Spray neem extract weekly."}
-        return None
-
+If no high risk, respond with only 'NO_ALERT'."""
+        
+        response = await self.model.generate_content_async(prompt)
+        
+        if "NO_ALERT" in response.text:
+            return None
+        
+        return {"alert_text": response.text}
 
 # ===== INIT =====
 weather_service = WeatherService()
