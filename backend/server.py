@@ -14,6 +14,9 @@ import base64
 import google.generativeai as genai
 import os
 from typing import Dict, Optional
+import httpx
+from fastapi import APIRouter, HTTPException
+from loguru import logger
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -230,16 +233,57 @@ async def get_fertilizer_advice(crop: str, farm_size_acres: float, latitude: flo
     }
 
 
+# @api_router.get("/mandi-prices")
+# async def get_mandi_prices(crop: str, latitude: float, longitude: float):
+#     return {
+#         "mandis": [
+#             {"mandi_name": "Nagpur", "min_price": 6800, "max_price": 7100, "unit": "quintal"},
+#             {"mandi_name": "Wardha", "min_price": 7000, "max_price": 7250, "unit": "quintal"},
+#         ]
+#     }
+
 @api_router.get("/mandi-prices")
 async def get_mandi_prices(crop: str, latitude: float, longitude: float):
-    return {
-        "mandis": [
-            {"mandi_name": "Nagpur", "min_price": 6800, "max_price": 7100, "unit": "quintal"},
-            {"mandi_name": "Wardha", "min_price": 7000, "max_price": 7250, "unit": "quintal"},
+    try:
+        api_url = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070"
+        params = {
+            "api-key": "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b",
+            "format": "json",
+            "filters[commodity]": crop,
+            "limit": 5,
+        }
+
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            resp = await client.get(api_url, params=params)
+            logger.info(f"Mandi API URL: {resp.url}")
+            logger.info(f"Status: {resp.status_code}, Response: {resp.text[:500]}")
+            resp.raise_for_status()
+            data = resp.json()
+
+        records = data.get("records", [])
+        if not records:
+            raise HTTPException(status_code=404, detail="No mandi prices found")
+
+        mandis = [
+            {
+                "mandi_name": r.get("market", "Unknown"),
+                "state": r.get("state"),
+                "district": r.get("district"),
+                "min_price": int(r.get("min_price", 0)),
+                "max_price": int(r.get("max_price", 0)),
+                "unit": r.get("price_unit", "quintal"),
+            }
+            for r in records
         ]
-    }
+
+        return {"mandis": mandis[:5]}
+
+    except Exception as e:
+        logger.error(f"Mandi API error: {e}")
+        raise HTTPException(status_code=500, detail="Error fetching mandi prices")
 
 
+# ===== Register API router =====
 app.include_router(api_router)
 
 app.add_middleware(
@@ -253,4 +297,3 @@ app.add_middleware(
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
-
