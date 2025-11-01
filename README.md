@@ -6,6 +6,9 @@
 
 A smart, hyper-local agro-advisory platform providing data-driven, simple, and accessible advice to Indian farmers.
 
+🎥 Live Demo
+> 🔗 **Watch Here:** [](https://youtu.be/meg_avbNvgo?si=_cSV2fMNGwhZA5Q6)](https://youtu.be/meg_avbNvgo?si=_cSV2fMNGwhZA5Q6))
+
 ---
 
 ## 📋 Table of Contents
@@ -64,11 +67,13 @@ Our system is the _only_ one that synthetically analyzes three key data points�
 
 The problem states that information is "too technical." We solve this by making our platform accessible to _all_ farmers, regardless of technical literacy.
 
-1.  **💬 WhatsApp Bot**
-    No app download needed. Farmers can get full advice (crop, fertilizer, market) 24/7 by simply sending their location or a question to our WhatsApp number. (Powered by Twilio API).
-
-2.  **🗣️ Voice & Vernacular (in Web App)**
-    The app features a "Microphone" button. Farmers can tap it and _ask_ a question in their regional language (like Hindi, Marathi, Telugu). The app transcribes the speech, finds the answer, and then _reads the answer back_ to them. (Powered by Google Cloud Speech-to-Text & Text-to-Speech).
+1. 🌍 1. Hyper-Local Intelligence
+Unlike generic agro apps, ArogyaMitti gives **village-level** recommendations — powered by **GPS-based soil, weather, and market synthesis**.  
+> Every farmer gets advice specific to *their* field, *not* their district.
+2. Data-Driven + Human-Centered
+ArogyaMitti bridges AI with simplicity — it **translates data science into everyday farmer language**.  
+- “Apply 2 bags of DAP” instead of “Use 20:60:20 NPK.”  
+- AI + empathy = accessibility.
 
 ## 🛠️ Architecture & Tech Stack
 
@@ -185,6 +190,11 @@ Here's how to get a local copy of the project up and running for development and
 - **Machine Learning Model:** Replace the static rules engine with a dynamic ML model (e.g., a neural network) trained on crop yield data to provide even more accurate, predictive recommendations.
 - **IoT Sensor Integration:** Allow farmers to connect low-cost, on-farm IoT soil sensors for real-time NPK data instead of relying on block-level government averages.
 - **Direct-to-Buyer Marketplace:** Create a feature that connects farmers directly with local restaurants, hotels, and buyers to sell their produce, bypassing middlemen.
+- **💬 WhatsApp Bot**
+    No app download needed. Farmers can get full advice (crop, fertilizer, market) 24/7 by simply sending their location or a question to our WhatsApp number. (Powered by Twilio API).
+   **🗣️ Voice & Vernacular (in Web App)**
+    The app features a "Microphone" button. Farmers can tap it and _ask_ a question in their regional language (like Hindi, Marathi, Telugu). The app transcribes the speech, finds the answer, and then _reads the answer back_ to them. (Powered by Google Cloud Speech-to-Text & Text-to-Speech).
+
 
 ## 🧑‍💻 Our Team
 
