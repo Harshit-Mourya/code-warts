@@ -7,7 +7,7 @@
 A smart, hyper-local agro-advisory platform providing data-driven, simple, and accessible advice to Indian farmers.
 
 🎥 Live Demo]
-> 🔗 **Watch Here:** [](https://youtu.be/G1SMSrg5Dxo?si=EX4ZtJO3tv0vnZ2s)
+> 🔗 **Watch Here:** [](https://youtu.be/G1SMSrg5Dxo?si=EX4ZtJO3tv0vnZ2s)https://youtu.be/G1SMSrg5Dxo?si=EX4ZtJO3tv0vnZ2s
 
 🌍 Real-World Impact
 
