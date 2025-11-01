@@ -1,44 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Leaf, Calculator, TrendingUp, Bug, Mic, MapPin } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Leaf, Calculator, TrendingUp, Bug, Mic, MapPin } from "lucide-react";
 
 const Home = ({ location }) => {
   const features = [
     {
       icon: <Leaf size={32} />,
-      title: 'Crop Recommendation',
-      description: 'Get personalized crop suggestions based on soil, weather, and location data',
-      link: '/crop-recommendation',
-      color: '#4a7c59'
+      title: "Crop Recommendation",
+      description:
+        "Get personalized crop suggestions based on soil, weather, and location data",
+      link: "/crop-recommendation",
+      color: "#4a7c59",
     },
     {
       icon: <Calculator size={32} />,
-      title: 'Fertilizer Calculator',
-      description: 'Calculate exact fertilizer requirements in simple, actionable terms',
-      link: '/fertilizer',
-      color: '#6b9c7a'
+      title: "Fertilizer Calculator",
+      description:
+        "Calculate exact fertilizer requirements in simple, actionable terms",
+      link: "/fertilizer",
+      color: "#6b9c7a",
     },
     {
       icon: <TrendingUp size={32} />,
-      title: 'Mandi Prices',
-      description: 'Check real-time crop prices at nearby mandis with directions',
-      link: '/mandi-prices',
-      color: '#4a7c59'
+      title: "Mandi Prices",
+      description:
+        "Check real-time crop prices at nearby mandis with directions",
+      link: "/mandi-prices",
+      color: "#4a7c59",
     },
     {
       icon: <Bug size={32} />,
-      title: 'Pest Alerts',
-      description: 'Receive proactive alerts about potential pest and disease risks',
-      link: '/pest-alerts',
-      color: '#c5221f'
+      title: "Pest Alerts",
+      description:
+        "Receive proactive alerts about potential pest and disease risks",
+      link: "/pest-alerts",
+      color: "#c5221f",
     },
-    {
-      icon: <Mic size={32} />,
-      title: 'Voice Assistant',
-      description: 'Ask questions in your language and get instant voice responses',
-      link: '/voice-assistant',
-      color: '#6b9c7a'
-    }
+    // {
+    //   icon: <Mic size={32} />,
+    //   title: 'Voice Assistant',
+    //   description: 'Ask questions in your language and get instant voice responses',
+    //   link: '/voice-assistant',
+    //   color: '#6b9c7a'
+    // }
   ];
 
   return (
@@ -49,10 +53,11 @@ const Home = ({ location }) => {
           <div className="hero-badge">
             <MapPin size={16} />
             <span>
-              {location ? 
-                `Location: ${location.lat.toFixed(2)}, ${location.lon.toFixed(2)}` : 
-                'Getting your location...'
-              }
+              {location
+                ? `Location: ${location.lat.toFixed(2)}, ${location.lon.toFixed(
+                    2
+                  )}`
+                : "Getting your location..."}
             </span>
           </div>
           <h1 className="hero-title" data-testid="hero-title">
@@ -62,17 +67,22 @@ const Home = ({ location }) => {
             स्मार्ट कृषि सलाहकार मंच | Smart Agro-Advisory Platform
           </p>
           <p className="hero-description">
-            Empowering farmers with AI-driven insights for better crop yields and sustainable farming practices
+            Empowering farmers with AI-driven insights for better crop yields
+            and sustainable farming practices
           </p>
           <div className="hero-actions">
-            <Link to="/crop-recommendation" className="btn btn-primary btn-lg" data-testid="get-started-btn">
+            <Link
+              to="/crop-recommendation"
+              className="btn btn-primary btn-lg"
+              data-testid="get-started-btn"
+            >
               <Leaf size={20} />
               Get Started
             </Link>
-            <Link to="/voice-assistant" className="btn btn-secondary btn-lg" data-testid="voice-assistant-btn">
+            {/* <Link to="/voice-assistant" className="btn btn-secondary btn-lg" data-testid="voice-assistant-btn">
               <Mic size={20} />
               Voice Assistant
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -83,12 +93,12 @@ const Home = ({ location }) => {
           <h2 className="section-title">Our Features</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
-              <Link 
-                key={index} 
-                to={feature.link} 
+              <Link
+                key={index}
+                to={feature.link}
                 className="feature-card"
                 data-testid={`feature-card-${index}`}
-                style={{ '--accent-color': feature.color }}
+                style={{ "--accent-color": feature.color }}
               >
                 <div className="feature-icon" style={{ color: feature.color }}>
                   {feature.icon}
@@ -140,13 +150,17 @@ const Home = ({ location }) => {
         }
 
         .hero::before {
-          content: '';
+          content: "";
           position: absolute;
           top: -50%;
           right: -20%;
           width: 600px;
           height: 600px;
-          background: radial-gradient(circle, rgba(74, 124, 89, 0.1) 0%, transparent 70%);
+          background: radial-gradient(
+            circle,
+            rgba(74, 124, 89, 0.1) 0%,
+            transparent 70%
+          );
           border-radius: 50%;
         }
 
@@ -234,7 +248,7 @@ const Home = ({ location }) => {
         }
 
         .feature-card::before {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
@@ -298,7 +312,7 @@ const Home = ({ location }) => {
         .stat-number {
           font-size: 3rem;
           font-weight: 700;
-          font-family: 'Cormorant Garamond', serif;
+          font-family: "Cormorant Garamond", serif;
           margin-bottom: 0.5rem;
         }
 
